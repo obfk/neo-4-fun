@@ -1,11 +1,11 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :event do
     store nil
     customer_id "MyString"
-    lat 1.5
-    long 1.5
-    event_at "2014-05-21 16:44:17"
+    lat Faker::Address.latitude
+    long Faker::Address.longitude
+    event_at Faker::Time.backward(14, :evening)
   end
 end

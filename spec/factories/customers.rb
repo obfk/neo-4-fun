@@ -6,5 +6,6 @@ FactoryGirl.define do
     zip Faker::Address.zip
     lat Faker::Address.latitude
     long Faker::Address.longitude
+    events { Array.new(rand(10)) { FactoryGirl.build(:event) } }
   end
 end
