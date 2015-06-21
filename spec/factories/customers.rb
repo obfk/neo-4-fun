@@ -1,10 +1,10 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :customer do
-    customer_id "MyString"
-    zip "MyString"
-    lat 1.5
-    long 1.5
+    sequence(:customer_id) { |n| "#{Faker::Lorem.characters(28)}#{n}" }
+    zip Faker::Address.zip
+    lat Faker::Address.latitude
+    long Faker::Address.longitude
   end
 end
