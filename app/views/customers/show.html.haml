@@ -1,1 +1,38 @@
-%h1 SHOW
+%h1 Customer
+
+.panel.panel-default
+  .panel-heading ID
+  .panel-body
+    = @customer.id
+
+.panel.panel-default
+  .panel-heading Customer ID
+  .panel-body
+    = @customer.customer_id
+
+.panel.panel-default
+  .panel-heading ZIP
+  .panel-body
+    = @customer.zip
+
+.panel.panel-default
+  .panel-heading LAT / LONG
+  .panel-body
+    = "#{@customer.lat} / #{@customer.long}"
+
+%h2 Events
+
+%table.table.table-striped
+  %th ID
+  %th Store ID
+  %th Lat
+  %th Long
+  %th Event At
+
+  - @customer.events.each do |event|
+    %tr
+      %td= event.id
+      %td= event.store_id
+      %td= event.lat
+      %td= event.long
+      %td= event.event_at
