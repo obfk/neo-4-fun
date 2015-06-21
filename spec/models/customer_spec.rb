@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Customer do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#number_of_events' do
+    let(:events) { FactoryGirl.build_list(:event, 3) }
+
+    it 'returns the length' do
+      customer = FactoryGirl.create(:customer, events: events)
+      expect(customer.number_of_events).to eq(3)
+    end
+  end
 end
