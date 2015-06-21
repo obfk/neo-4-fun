@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe CustomersController, type: :controller do
   describe '#index' do
-    before do
-      @foo = FactoryGirl.create_list(:customer, 10)
-    end
+    let(:customers) { FactoryGirl.create_list(:customer, 10) }
 
     it 'returns the correct status code' do
       get :index
@@ -13,7 +11,7 @@ describe CustomersController, type: :controller do
 
     it 'assigns @customers' do
       get :index
-      expect(assigns(:customers)).to eq(@foo)
+      expect(assigns(:customers)).to eq(customers)
     end
 
     it 'renders the index template' do
@@ -23,12 +21,12 @@ describe CustomersController, type: :controller do
 
     it 'limits results' do
       get :index, {limit: 1}
-      expect(assigns(:customers)).to eq([@foo.first])
+      expect(assigns(:customers)).to eq([customers.first])
     end
 
     it 'offsets results' do
       get :index, {offset: 9}
-      expect(assigns(:customers)).to eq([@foo.last])
+      expect(assigns(:customers)).to eq([customers.last])
     end
   end
 
