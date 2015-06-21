@@ -5,4 +5,8 @@ class CustomersController < ApplicationController
   def index
     @customers = Customer.limit(params[:limit] || MAX_LIMIT).offset(params[:offset])
   end
+
+  def show
+    @customer = Customer.find(params[:id])
+  end
 end

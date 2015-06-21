@@ -31,4 +31,23 @@ describe CustomersController, type: :controller do
       expect(assigns(:customers)).to eq([@foo.last])
     end
   end
+
+  describe '#show' do
+    let(:customer) { FactoryGirl.create(:customer) }
+
+    it 'returns the correct status code' do
+      get :show, {id: customer.id}
+      expect(response.status).to eq(200)
+    end
+
+    it 'assigns @customers' do
+      get :show, {id: customer.id}
+      expect(assigns(:customer)).to eq(customer)
+    end
+
+    it 'renders the show template' do
+      get :show, {id: customer.id}
+      expect(response).to render_template('show')
+    end
+  end
 end
