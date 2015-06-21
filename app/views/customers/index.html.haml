@@ -1,0 +1,19 @@
+%h1 Customers
+
+%table.table.table-striped
+
+  %th ID
+  %th Customer ID
+  %th Zip
+  %th Lat
+  %th Long
+  %th Events
+
+  - @customers.each do |customer|
+    %tr
+      %td= customer.id
+      %td= customer.customer_id
+      %td= customer.zip
+      %td= customer.lat
+      %td= customer.long
+      %td= link_to(customer.number_of_events, customer_path(customer))
