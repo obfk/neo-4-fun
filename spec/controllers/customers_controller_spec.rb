@@ -22,12 +22,12 @@ describe CustomersController, type: :controller do
     end
 
     it 'limits results' do
-      get :index, { limit: 1 }
+      get :index, {limit: 1}
       expect(assigns(:customers)).to eq([@foo.first])
     end
 
     it 'offsets results' do
-      get :index, { offset: 9 }
+      get :index, {offset: 9}
       expect(assigns(:customers)).to eq([@foo.last])
     end
   end
